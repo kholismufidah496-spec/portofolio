@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio - Home</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: #f4f5f7;
+            color: #111;
+            padding: 20px 40px;
+        }
+
+        /* Header / Navbar */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        nav {
+            background-color: #e4e6eb;
+            padding: 6px 12px;
+            border-radius: 50px;
+            display: flex;
+            gap: 8px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #555;
+            font-size: 0.9rem;
+            font-weight: 500;
+            padding: 6px 16px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        nav a.active, nav a:hover {
+            background-color: #111;
+            color: #fff;
+        }
+
+        /* --- Bagian Utama Home (Kotak Putih Panjang & Kotak Hitam di Dalamnya) --- */
+        .hero-container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .hero-content-left {
+            flex: 1.5;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .profile-img-container {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-bottom: 24px;
+            border: 2px solid #eaeaea;
+        }
+
+        .profile-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-content-left h1 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        .hero-content-left p {
+            color: #666;
+            font-size: 1rem;
+            line-height: 1.5;
+            margin-bottom: 24px;
+            max-width: 90%;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: #f4f5f7;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            width: fit-content;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #111;
+            border-radius: 50%;
+        }
+
+        /* Kotak Hitam Resume (Kecil di dalam kotak putih) */
+        .hero-right {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .card-resume {
+            background-color: #111;
+            color: #fff;
+            padding: 24px 28px;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-decoration: none;
+            transition: transform 0.2s ease;
+            width: 100%;
+            max-width: 320px;
+            height: 180px;
+        }
+
+        .card-resume:hover {
+            transform: translateY(-3px);
+        }
+
+        .card-resume .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .card-resume span {
+            color: #aaa;
+            font-size: 0.85rem;
+        }
+
+        .arrow-icon {
+            font-size: 1.1rem;
+            color: #fff;
+        }
+
+        .card-resume h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        /* --- Bagian Karya (Things I've Built) --- */
+        .projects-section {
+            margin-top: 50px;
+        }
+
+        .projects-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        /* Kotak Hitam Utama / Atas (Tetap Landscape Lebar Penuh) */
+        .project-card.dark-featured {
+            grid-column: span 2;
+            background-color: #111;
+            color: #fff;
+            padding: 35px;
+            border-radius: 24px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            text-decoration: none;
+            transition: transform 0.2s ease;
+        }
+
+        .project-card.dark-featured:hover {
+            transform: translateY(-3px);
+        }
+
+        .dark-featured-content {
+            max-width: 60%;
+        }
+
+        .dark-featured-content .project-tags {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .dark-featured-content .tag {
+            background-color: #222;
+            color: #aaa;
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+        }
+
+        .dark-featured-content h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .dark-featured-content p {
+            color: #aaa;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .dark-featured-img {
+            width: 38%;
+            height: 200px;
+            border-radius: 16px;
+            overflow: hidden;
+            background-color: #222;
+        }
+
+        .dark-featured-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* 2 Karya di Bawah (Kembali Portrait / Standar) */
+        .project-card {
+            background-color: #ffffff;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .project-img-box {
+            width: 100%;
+            height: 220px;
+            background-color: #e4e6eb;
+            overflow: hidden;
+        }
+
+        .project-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-content {
+            padding: 24px;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background-color: #f4f5f7;
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #555;
+        }
+
+        .project-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .project-card p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .project-link {
+            text-decoration: none;
+            color: #111;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        /* --- Bagian About & What I do / Achievement --- */
+        .info-section {
+            margin-top: 50px;
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 24px;
+        }
+
+        .info-card {
+            background-color: #ffffff;
+            padding: 35px;
+            border-radius: 24px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .info-card h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .info-card p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 14px;
+        }
+
+        .capability-item h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: #111;
+        }
+
+        .capability-item p {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        /* --- 2 Ruang Kecil Landscape untuk Achievement di Bawah What I do --- */
+        .achievement-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 10px;
+        }
+
+        .achievement-box {
+            background-color: #f4f5f7;
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .achievement-img {
+            width: 100%;
+            height: 100px;
+            background-color: #e4e6eb;
+            overflow: hidden;
+        }
+
+        .achievement-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .achievement-desc {
+            padding: 12px;
+        }
+
+        .achievement-desc h4 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: #111;
+        }
+
+        .achievement-desc p {
+            font-size: 0.75rem;
+            color: #666;
+            margin-bottom: 0;
+            line-height: 1.4;
+        }
+
+        /* --- Bagian Works with --- */
+        .works-section {
+            margin-top: 50px;
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+        }
+
+        .works-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .skill-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: #f4f5f7;
+            padding: 10px 18px;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #111;
+            border: 1px solid #e4e6eb;
+        }
+
+        .skill-badge span.icon {
+            font-size: 1.1rem;
+            filter: grayscale(100%) brightness(20%);
+        }
+
+        /* --- Bagian Contact --- */
+        .contact-banner {
+            margin-top: 50px;
+            background-color: #111;
+            color: #fff;
+            padding: 40px;
+            border-radius: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .contact-banner-text h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+
+        .contact-banner-text p {
+            color: #aaa;
+            font-size: 1rem;
+        }
+
+        .contact-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .contact-btn {
+            background-color: #fff;
+            color: #111;
+            padding: 10px 18px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            background-color: #eaeaea;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .hero-container, .projects-grid, .info-section, .contact-banner {
+                grid-template-columns: 1fr;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .hero-container {
+                flex-direction: column;
+            }
+            .hero-right {
+                width: 100%;
+                justify-content: flex-start;
+            }
+            .card-resume {
+                max-width: 100%;
+            }
+            .project-card.dark-featured {
+                grid-column: span 1;
+                flex-direction: column;
+            }
+            .dark-featured-content {
+                max-width: 100%;
+                margin-bottom: 20px;
+            }
+            .dark-featured-img {
+                width: 100%;
+            }
+            body {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header & Navbar -->
+    <header>
+        <div class="logo">Portofolio</div>
+        <nav>
+            <a href="#home" class="active">Home</a>
+            <a href="#about">About Me</a>
+            <a href="#what-i-can-do">What I Can Do</a>
+            <a href="#achievement">Achievement</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Bagian Utama Home (Kotak Putih Panjang Berisi Profil & Kotak Hitam Resume) -->
+    <section class="hero-container" id="home">
+        <!-- Bagian Kiri (Profil & Bio) -->
+        <div class="hero-content-left">
+            <div>
+                <div class="profile-img-container">
+                    <img src="foto2.jpeg" alt="Foto Profil">
+                </div>
+                <h1>Hi, I'm Kholis.</h1>
+                <p>I am interested in technology development, with a focus on graphic design, and have begun exploring User Interface development.</p>
+            </div>
+            <div class="status-badge">
+                <div class="status-dot"></div>
+                <span>Student</span>
+            </div>
+        </div>
+
+        <!-- Bagian Kanan (Kotak Hitam Resume di dalam Kotak Putih) -->
+        <div class="hero-right">
+            <a href="CV_Amelio_Kholi Shotul Mufidah.pdf" target="_blank" class="card-resume">
+                <div class="card-top">
+                    <span>Looking for credentials?</span>
+                    <span class="arrow-icon">→</span>
+                </div>
+                <h3>View My Resume</h3>
+            </a>
+        </div>
+    </section>
+
+    <!-- Bagian Karya Saya (Things I've Built) -->
+    <section class="projects-section" id="projects">
+        <h2>Things I've built</h2>
+        <div class="projects-grid">
+            
+            <!-- Karya 1 (Kotak Hitam Landscape di Atas dengan Link Canva Aktif) -->
+            <a href="https://canva.link/t84y2xhapb3o6s5" target="_blank" class="project-card dark-featured">
+                <div class="dark-featured-content">
+                    <div class="project-tags">
+                        <span class="tag">UI Design</span>
+                        <span class="tag">Canva-Situs Web</span>
+                    </div>
+                    <h3>Mu-Bie</h3>
+                    <p>Exploration project for the interface design of a digital entertainment and drama streaming application.</p>
+                    <span class="project-link" style="color: #fff; margin-top: 15px; display:inline-block;">View Project →</span>
+                </div>
+                <div class="dark-featured-img">
+                    <img src="mantis (2).png" alt="Proyek Mu-Bie">
+                </div>
+            </a>
+
+            <!-- Karya 2 (Kiri Bawah - Portrait) -->
+            <div class="project-card">
+                <div>
+                    <div class="project-img-box">
+                        <img src="infografis.jpeg" alt="Proyek Infografis">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="tag">Graphic Design</span>
+                            <span class="tag">Canva</span>
+                        </div>
+                        <h3>Infografis SDGs</h3>
+                        <p>This digital work is a two-dimensional (2D) educational infographic poster focused on economics, presented in a modern, clean, and informative visual style.</p>
+                    </div>
+                </div>
+                <div class="project-content" style="padding-top: 0;">
+                    <a href="infografis.jpeg" class="project-link">View Project →</a>
+                </div>
+            </div>
+
+            <!-- Karya 3 (Kanan Bawah - Portrait) -->
+            <div class="project-card">
+                <div>
+                    <div class="project-img-box">
+                        <img src="brownies.png" alt="Proyek Brownies">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="tag">Digital Poster</span>
+                            <span class="tag">Canva</span>
+                        </div>
+                        <h3>Simple Fudgy</h3>
+                        <p>Simple, attractive promotional material for brownies that focuses on the product's deliciousness.</p>
+                    </div>
+                </div>
+                <div class="project-content" style="padding-top: 0;">
+                    <a href="Teks paragraf Anda.jpg" class="project-link">View Project →</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Bagian About Me & What I do / Achievement -->
+    <section class="info-section" id="about">
+        <!-- About Me -->
+        <div class="info-card">
+            <h2>About</h2>
+            <p>Hey, I'm Kholis — an aspiring developer and designer focusing on graphic and UI development. I started exploring design and technology out of pure curiosity, and I've never looked back.</p>
+            <p>I enjoy turning creative ideas into visually appealing and functional digital experiences. Outside of projects, I continuously explore new tools to sharpen my skills in modern interface design.</p>
+        </div>
+
+        <!-- What I do & Achievement -->
+        <div class="info-card" id="what-i-can-do">
+            <div>
+                <h2>What I do & Achievement</h2>
+                <div class="capability-item">
+                    <h3>UI & Graphic Design</h3>
+                    <p>Designing clean, modern, and engaging user interfaces and visual assets such as posters and infographics using tools like Canva and Figma.</p>
+                </div>
+            </div>
+
+            <!-- 2 Ruang Kecil Landscape untuk Achievement di Bawah -->
+            <div class="achievement-grid" id="achievement">
+                <!-- Achievement 1 -->
+                <div class="achievement-box">
+                    <div class="achievement-img">
+                        <img src="gemini.png" alt="Achievement 1">
+                    </div>
+                    <div class="achievement-desc">
+                        <h4>Gemini Certified</h4>
+                        <p>Gemini Certified - University</p>
+                    </div>
+                </div>
+
+                <!-- Achievement 2 -->
+                <div class="achievement-box">
+                    <div class="achievement-img">
+                        <img src="gayatama.jpeg" alt="Achievement 2">
+                    </div>
+                    <div class="achievement-desc">
+                        <h4>Gayatama 2026</h4>
+                        <p>Paricipation</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bagian Works with -->
+    <section class="works-section">
+        <h2>Works with</h2>
+        <div class="skills-container">
+            <div class="skill-badge"><span class="icon">💻</span> PHP</div>
+            <div class="skill-badge"><span class="icon">🐍</span> Python</div>
+            <div class="skill-badge"><span class="icon">🗄️</span> MySQL</div>
+            <div class="skill-badge"><span class="icon">🎨</span> Canva</div>
+            <div class="skill-badge"><span class="icon">🎯</span> Figma</div>
+            <div class="skill-badge"><span class="icon">🐱</span> GitHub</div>
+        </div>
+    </section>
+
+    <!-- Bagian Contact -->
+    <section class="contact-banner" id="contact">
+        <div class="contact-banner-text">
+            <h2>Let's Connect</h2>
+            <p>Get in touch with me through email, social media, or chat.</p>
+        </div>
+        <div class="contact-buttons">
+            <a href="mailto:26050974047@mhs.unesa.ac.id" class="contact-btn">
+                <span>✉️</span> Email
+            </a>
+            <a href="https://www.linkedin.com/in/kholi-shotul-mufidah-0319ba403" target="_blank" class="contact-btn">
+                <span>💼</span> LinkedIn
+            </a>
+            <a href="https://www.instagram.com/khlls_s?srtk=MW5ydG82ZW15MXI5aA==" target="_blank" class="contact-btn">
+                <span>📸</span> Instagram
+            </a>
+            <a href="https://wa.me/085755335009" target="_blank" class="contact-btn">
+                <span>💬</span> WhatsApp
+            </a>
+        </div>
+    </section>
+
+</body>
+</html>
